@@ -20,7 +20,8 @@ BreweriesCase/
 
 ├─ data/
 
-│ ├─ bronze/ # Raw JSON from API /n
+│ ├─ bronze/ # Raw JSON from API
+
 │ ├─ silver/ # Parquet partitioned by state/city
 
 │ └─ gold/ # Aggregated Parquet
