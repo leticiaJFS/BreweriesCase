@@ -19,7 +19,6 @@ This project demonstrates a **data pipeline** that consumes data from the Open B
 BreweriesCase/
 
 ├─ data/
-
 │ ├─ bronze/ # Raw JSON from API
 
 │ ├─ silver/ # Parquet partitioned by state/city
