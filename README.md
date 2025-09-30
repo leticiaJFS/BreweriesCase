@@ -17,21 +17,35 @@ This project demonstrates a **data pipeline** that consumes data from the Open B
 ## **Project Structure**
 
 BreweriesCase/
+
 ├─ data/
+
 │ ├─ bronze/ # Raw JSON from API
 
 │ ├─ silver/ # Parquet partitioned by state/city
+
 │ └─ gold/ # Aggregated Parquet
+
 ├─ src/
+
 │ ├─ api/
+
 │ │ └─ breweries_api.py # Bronze Layer extraction
+
 │ └─ transformations/
+
 │ ├─ bronze_to_silver.py # Bronze → Silver
+
 │ └─ silver_to_gold.py # Silver → Gold
+
 ├─ tests/
+
 │ ├─ test_transformations.py # Silver Layer tests
+
 │ └─ test_gold_layer.py # Gold Layer tests
+
 ├─ README.md
+
 └─ requirements.txt
 
 
