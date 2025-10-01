@@ -98,7 +98,7 @@ python -m pytest tests/
 - tests/test_transformations.py → checks Silver Layer creation
 - tests/test_gold_layer.py → checks Gold Layer aggregation
 
-## **Extra Notes** 
+## **Testing**
 - All scripts are modular (src/api for extraction, src/transformations for ETL)
 - Data layers separated in data/bronze, data/silver, data/gold
 - Paths and folder names are sanitized to avoid special character issues
