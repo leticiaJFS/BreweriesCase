@@ -1,7 +1,4 @@
 # src/luigi_pipeline.py  
-# python -m src.pipeline.luigi_pipeline
-# python -m luigi.server --port 8082 -- Roda no shell para subir o orquestrador
-# http://localhost:8082/static/visualiser/index.html
 
 """
 Pipeline Luigi – Medallion Architecture (Bronze → Silver → Gold)
@@ -181,4 +178,4 @@ if __name__ == "__main__":
     - Pode ser agendado via Task Scheduler ou cron
     """
     #luigi.build([GoldTask()], local_scheduler=True)
-    luigi.build([GoldTask()], local_scheduler=False)
+    luigi.build([GoldTask()], local_scheduler=False, scheduler_host='luigi-scheduler', scheduler_port=8082)

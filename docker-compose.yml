@@ -1,0 +1,22 @@
+version: "3.9"
+services:
+  luigi-scheduler:
+    build: .
+    container_name: luigi-scheduler
+    ports:
+      - "8082:8082"
+    volumes:
+      - .:/app
+    command: luigid --port 8082 --address 0.0.0.0
+
+  luigi-worker:
+    build: .
+    container_name: luigi-worker
+    depends_on:
+      - luigi-scheduler
+    volumes:
+      - ./src:/app/src
+      - ./data:/app/data
+    command: python src/pipeline/luigi_pipeline.py
+    environment:
+      - PYTHONPATH=/app
