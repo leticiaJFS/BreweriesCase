@@ -95,7 +95,8 @@ Aggregation Applied:
 ## **Testing** 
 Automated tests are included for Silver and Gold layers:
 python -m pytest tests/
-- tests/test_transformations.py → checks Silver Layer creation
+- tests/test_bronze_layer.py → checks Bronze Layer extraction
+- tests/test_silver_layer.py → checks Silver Layer creation
 - tests/test_gold_layer.py → checks Gold Layer aggregation
 
 ## **Testing**
