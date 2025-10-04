@@ -76,23 +76,29 @@ docker-compose up --build pipeline
 
 2. Run individual layers
 
-- Bronze (API extraction):
+- Bronze (API extraction): 
+
 docker-compose up --build bronze
 
-- Silver (Bronze → Silver transformation):
+- Silver (Bronze → Silver transformation): 
+
 docker-compose up --build silver
 
-- Gold (Silver → Gold aggregation):
+- Gold (Silver → Gold aggregation): 
+
 docker-compose up --build gold
 
 3. Run automated tests
 docker-compose up --build tests
 
 tests/2 test_bronze_layer.py → checks Bronze Layer creation
+
 tests/2 test_silver_layer.py → checks Silver Layer creation
+
 tests/3 test_gold_layer.py → checks Gold Layer aggregation
 
 4. Interactive container for debugging
+
 docker-compose run pipeline bash
 
 All services have tty: true, so you can explore the container environment, inspect data, or manually run any script.
@@ -109,17 +115,17 @@ Transform raw JSON into Parquet, partitioned by state & city (src/transformation
 Output: data/silver/state=.../city=.../data.parquet
 
 Transformations Applied:
-Filter relevant columns for analytics
-Handle missing values: strings → empty "", numeric → NaN
-Partitioned by state and city for optimized querying
+- Filter relevant columns for analytics
+- Handle missing values: strings → empty "", numeric → NaN
+- Partitioned by state and city for optimized querying
 
 - Gold Layer
 Aggregate Silver Layer to count breweries by brewery_type, state, and city (src/transformations/silver_to_gold.py)
 Output: data/gold/breweries_aggregated.parquet
 
 Aggregation Applied:
-brewery_count = number of breweries per brewery_type per location
-Columnar storage for analytics
+- brewery_count = number of breweries per brewery_type per location
+- Columnar storage for analytics
 
 ## **Notes**
 
