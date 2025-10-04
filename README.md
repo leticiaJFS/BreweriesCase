@@ -91,7 +91,7 @@ docker-compose up --build gold
 3. Run automated tests
 docker-compose up --build tests
 
-tests/2 test_bronze_layer.py → checks Bronze Layer creation
+tests/1 test_bronze_layer.py → checks Bronze Layer creation
 
 tests/2 test_silver_layer.py → checks Silver Layer creation
 
