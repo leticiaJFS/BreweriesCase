@@ -42,6 +42,12 @@ BreweriesCase/
 
 │     └─ silver_to_gold.py       # Silver → Gold
 
+│  └─ pyspark/                   # PySpark equivalents
+
+│     ├─ bronze_to_silver_spark.py     # PySpark version (example)
+
+│     └─ silver_to_gold_spark.py
+
 ├─ tests/
 
 │  ├─ 1 test_bronze_layer.py     # Bronze Layer tests
@@ -102,6 +108,20 @@ tests/3 test_gold_layer.py → checks Gold Layer aggregation
 docker-compose run pipeline bash
 
 All services have tty: true, so you can explore the container environment, inspect data, or manually run any script.
+
+## **PySpark Equivalent Scripts (Optional)**
+
+This project includes PySpark versions of the transformation scripts to demonstrate knowledge of PySpark, following the same medallion architecture.
+
+Location: src/pyspark/
+
+Scripts:
+
+bronze_to_silver.py → PySpark equivalent of Bronze → Silver transformation
+
+silver_to_gold.py → PySpark equivalent of Silver → Gold aggregation
+
+These scripts are not runnable on Windows without a proper Spark environment. They are provided for demonstration purposes to show familiarity with the PySpark API.
 
 ## **Layer Details**
 
