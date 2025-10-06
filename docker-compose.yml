@@ -7,11 +7,12 @@ services:
     container_name: breweries_pipeline
     volumes:
       - ./data:/app/data
+      - ./logs:/app/logs
+      - ./src:/app/src
     working_dir: /app
-    command: bash -c "\
-      python src/api/breweries_api.py && \
-      python src/transformations/bronze_to_silver.py && \
-      python src/transformations/silver_to_gold.py"
+    command: python src/pipeline/luigi_pipeline.py
+    environment:
+      - PYTHONPATH=/app/src
     tty: true
 
   # Service for the Bronze layer only (extraction)
@@ -20,6 +21,8 @@ services:
     container_name: breweries_bronze
     volumes:
       - ./data:/app/data
+      - ./logs:/app/logs
+      - ./src:/app/src
     working_dir: /app
     command: python src/api/breweries_api.py
     tty: true
@@ -30,6 +33,8 @@ services:
     container_name: breweries_silver
     volumes:
       - ./data:/app/data
+      - ./logs:/app/logs
+      - ./src:/app/src
     working_dir: /app
     command: python src/transformations/bronze_to_silver.py
     tty: true
@@ -40,6 +45,8 @@ services:
     container_name: breweries_gold
     volumes:
       - ./data:/app/data
+      - ./logs:/app/logs
+      - ./src:/app/src
     working_dir: /app
     command: python src/transformations/silver_to_gold.py
     tty: true
@@ -50,6 +57,11 @@ services:
     container_name: breweries_tests
     volumes:
       - ./data:/app/data
+      - ./logs:/app/logs
+      - ./src:/app/src
     working_dir: /app
     command: pytest tests/
     tty: true
+
+
+

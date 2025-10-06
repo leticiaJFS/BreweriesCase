@@ -1,0 +1,50 @@
+2025-10-06 17:42:26,402 - luigi - INFO - logging configured by default settings
+2025-10-06 17:42:26,422 - luigi-interface - DEBUG - Checking if GoldTask() is complete
+2025-10-06 17:42:26,424 - luigi-interface - DEBUG - Checking if SilverTask() is complete
+2025-10-06 17:42:26,428 - luigi-interface - INFO - Informed scheduler that task   GoldTask__99914b932b   has status   PENDING
+2025-10-06 17:42:26,429 - luigi-interface - DEBUG - Checking if ExtractTask() is complete
+2025-10-06 17:42:26,433 - luigi-interface - INFO - Informed scheduler that task   SilverTask__99914b932b   has status   PENDING
+2025-10-06 17:42:26,434 - luigi-interface - INFO - Informed scheduler that task   ExtractTask__99914b932b   has status   PENDING
+2025-10-06 17:42:26,436 - luigi-interface - INFO - Done scheduling tasks
+2025-10-06 17:42:26,436 - luigi-interface - INFO - Running Worker with 1 processes
+2025-10-06 17:42:26,437 - luigi-interface - DEBUG - Asking scheduler for work...
+2025-10-06 17:42:26,438 - luigi-interface - DEBUG - Pending tasks: 3
+2025-10-06 17:42:26,439 - luigi-interface - INFO - [pid 1] Worker Worker(salt=2350057177, workers=1, host=a24c0c311f17, username=root, pid=1) running   ExtractTask()
+2025-10-06 17:42:26,440 - __main__ - INFO - [ExtractTask] Fetching data from Open Brewery API...
+2025-10-06 17:44:33,258 - __main__ - INFO - [ExtractTask] Bronze layer data saved successfully.
+2025-10-06 17:44:33,262 - luigi-interface - INFO - [pid 1] Worker Worker(salt=2350057177, workers=1, host=a24c0c311f17, username=root, pid=1) done      ExtractTask()
+2025-10-06 17:44:33,265 - luigi-interface - DEBUG - 1 running tasks, waiting for next task to finish
+2025-10-06 17:44:33,267 - luigi-interface - INFO - Informed scheduler that task   ExtractTask__99914b932b   has status   DONE
+2025-10-06 17:44:33,268 - luigi-interface - DEBUG - Asking scheduler for work...
+2025-10-06 17:44:33,269 - luigi-interface - DEBUG - Pending tasks: 2
+2025-10-06 17:44:33,270 - luigi-interface - INFO - [pid 1] Worker Worker(salt=2350057177, workers=1, host=a24c0c311f17, username=root, pid=1) running   SilverTask()
+2025-10-06 17:44:33,273 - __main__ - INFO - [SilverTask] Starting Bronze → Silver transformation...
+2025-10-06 17:50:11,635 - __main__ - INFO - [SilverTask] Silver layer successfully generated.
+2025-10-06 17:50:11,637 - luigi-interface - INFO - [pid 1] Worker Worker(salt=2350057177, workers=1, host=a24c0c311f17, username=root, pid=1) done      SilverTask()
+2025-10-06 17:50:11,640 - luigi-interface - DEBUG - 1 running tasks, waiting for next task to finish
+2025-10-06 17:50:11,644 - luigi-interface - INFO - Informed scheduler that task   SilverTask__99914b932b   has status   DONE
+2025-10-06 17:50:11,645 - luigi-interface - DEBUG - Asking scheduler for work...
+2025-10-06 17:50:11,647 - luigi-interface - DEBUG - Pending tasks: 1
+2025-10-06 17:50:11,649 - luigi-interface - INFO - [pid 1] Worker Worker(salt=2350057177, workers=1, host=a24c0c311f17, username=root, pid=1) running   GoldTask()
+2025-10-06 17:50:11,658 - __main__ - INFO - [GoldTask] Starting Silver → Gold aggregation...
+2025-10-06 17:51:43,094 - __main__ - INFO - [GoldTask] Gold layer successfully created.
+2025-10-06 17:51:43,095 - luigi-interface - INFO - [pid 1] Worker Worker(salt=2350057177, workers=1, host=a24c0c311f17, username=root, pid=1) done      GoldTask()
+2025-10-06 17:51:43,097 - luigi-interface - DEBUG - 1 running tasks, waiting for next task to finish
+2025-10-06 17:51:43,100 - luigi-interface - INFO - Informed scheduler that task   GoldTask__99914b932b   has status   DONE
+2025-10-06 17:51:43,102 - luigi-interface - DEBUG - Asking scheduler for work...
+2025-10-06 17:51:43,106 - luigi-interface - DEBUG - Done
+2025-10-06 17:51:43,108 - luigi-interface - DEBUG - There are no more tasks to run at this time
+2025-10-06 17:51:43,110 - luigi-interface - INFO - Worker Worker(salt=2350057177, workers=1, host=a24c0c311f17, username=root, pid=1) was stopped. Shutting down Keep-Alive thread
+2025-10-06 17:51:43,115 - luigi-interface - INFO - 
+===== Luigi Execution Summary =====
+
+Scheduled 3 tasks of which:
+* 3 ran successfully:
+    - 1 ExtractTask()
+    - 1 GoldTask()
+    - 1 SilverTask()
+
+This progress looks :) because there were no failed tasks or missing dependencies
+
+===== Luigi Execution Summary =====
+

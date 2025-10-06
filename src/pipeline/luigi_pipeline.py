@@ -30,9 +30,9 @@ import json
 import logging
 from luigi import Event
 
-from src.api.breweries_api import fetch_breweries
-from src.transformations.bronze_to_silver import bronze_to_silver
-from src.transformations.silver_to_gold import silver_to_gold
+from api.breweries_api import fetch_breweries
+from transformations.bronze_to_silver import bronze_to_silver
+from transformations.silver_to_gold import silver_to_gold
 
 # ---------------------------------------------------------------------
 # CONFIGURATION
@@ -41,8 +41,21 @@ from src.transformations.silver_to_gold import silver_to_gold
 # Base directory for all data layers
 DATA_DIR = "data"
 
-# Configure global logging
-logging.basicConfig(level=logging.INFO)
+# Configure global logging (with file + console handlers)
+LOG_DIR = "logs"
+os.makedirs(LOG_DIR, exist_ok=True)
+
+log_file = os.path.join(LOG_DIR, "pipeline.log")
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    handlers=[
+        logging.StreamHandler(),  # exibe no console
+        logging.FileHandler("logs/pipeline.log", mode="a", encoding="utf-8")  # grava em arquivo
+    ]
+)
+
 logger = logging.getLogger(__name__)
 
 # ---------------------------------------------------------------------
@@ -212,12 +225,12 @@ if __name__ == "__main__":
     """
 
     # Example for local testing (standalone mode):
-    #luigi.build([GoldTask()], local_scheduler=True)
+    luigi.build([GoldTask()], local_scheduler=True)
 
     # Production-like execution (Docker-compatible):
-    luigi.build(
+    '''luigi.build(
         [GoldTask()], 
         local_scheduler=False, 
         scheduler_host='luigi-scheduler', 
         scheduler_port=8082,
-    )
+    )'''
