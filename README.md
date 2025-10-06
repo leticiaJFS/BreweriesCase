@@ -26,6 +26,8 @@ BreweriesCase/
 
 │  └─ gold/     # Aggregated Parquet
 
+├─ logs/
+
 ├─ src/
 
 │  ├─ api/
